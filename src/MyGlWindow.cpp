@@ -7,7 +7,7 @@ void MyGlWindow::initializeGL()
 {
     glewInit();
 
-    //Set vertices of initial 2D triangle in screen coordinates
+    //Set vertices of triangles
     GLfloat vertices[] =
     {
         -1.0f,  1.0f, 0.0f,
