@@ -36,7 +36,6 @@ list(APPEND LIBRARIES ${OPENGL_LIBRARIES})
 
 ##########################################
 # Final setup
-
 include_directories(${INCLUDE_DIRS})
 
 add_executable(opengl-101 ${SOURCE_FILES})
