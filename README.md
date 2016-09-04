@@ -1,3 +1,3 @@
 # opengl-101
 
-Sample OpenGL project created for educational purposes. Uses cmake and Qt5. 
+Sample OpenGL project created for educational purposes. Can serve as basis for OpenGL beginners to understand basic 3D rendering. Uses cmake and Qt5. 
