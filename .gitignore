@@ -1,4 +1,6 @@
+#Standard
 build/
+*~
 
 #Qt creator user files
 *.user
