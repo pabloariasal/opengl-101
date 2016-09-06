@@ -11,9 +11,15 @@ set(SOURCE_FILES
 	src/main.cpp
         src/MyGlWindow.h
         src/MyGlWindow.cpp
+        src/ShaderInstaller.h
+        src/ShaderInstaller.cpp
+        src/utils/IOTools.h
+        src/utils/IOTools.cpp
 )
 
 set(INCLUDE_DIRS src)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 ##########################################
 # Dependencies
@@ -33,6 +39,11 @@ list(APPEND LIBRARIES ${GLEW_LIBRARIES})
 #OpenGL
 find_package(OpenGL REQUIRED)
 list(APPEND LIBRARIES ${OPENGL_LIBRARIES})
+
+#Boost
+find_package(Boost 1.54 COMPONENTS system filesystem)
+list(APPEND INCLUDE_DIRS ${Boost_INCLUDE_DIRS})
+list(APPEND LIBRARIES ${Boost_LIBRARIES})
 
 ##########################################
 # Final setup

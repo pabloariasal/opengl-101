@@ -1,6 +1,6 @@
-#version 403
+#version 330
 
-out vec4 vColor
+out vec4 vColor;
 
 void main()
 {

@@ -4,7 +4,6 @@
 
 class MyGlWindow : public QGLWidget
 {
-
 public:
 
 protected:
