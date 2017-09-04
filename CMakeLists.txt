@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.11)
+cmake_minimum_required(VERSION 2.8)
 
 project(opengl-101)
 
@@ -9,17 +9,13 @@ set(CMAKE_AUTOMOC ON)
 
 set(SOURCE_FILES
 	src/main.cpp
-        src/MyGlWindow.h
-        src/MyGlWindow.cpp
-        src/ShaderInstaller.h
-        src/ShaderInstaller.cpp
-        src/utils/IOTools.h
-        src/utils/IOTools.cpp
+	src/my_gl_window.cpp
+	src/shader_compiler.cpp
 )
 
 set(INCLUDE_DIRS src)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Werror")
 
 ##########################################
 # Dependencies
@@ -41,7 +37,7 @@ find_package(OpenGL REQUIRED)
 list(APPEND LIBRARIES ${OPENGL_LIBRARIES})
 
 #Boost
-find_package(Boost 1.54 COMPONENTS system filesystem)
+find_package(Boost COMPONENTS system filesystem)
 list(APPEND INCLUDE_DIRS ${Boost_INCLUDE_DIRS})
 list(APPEND LIBRARIES ${Boost_LIBRARIES})
 

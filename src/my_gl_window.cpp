@@ -1,18 +1,18 @@
 #include <GL/glew.h>
 #include <iostream>
 
-#include "MyGlWindow.h"
+#include <boost/filesystem.hpp>
 
-#include "ShaderInstaller.h"
-#include <boost/program_options.hpp>
-
-namespace fs = boost::filesystem;
+#include "my_gl_window.h"
+#include "shader_compiler.h"
 
 void MyGlWindow::initializeGL()
 {
+	namespace fs = boost::filesystem;
+
     glewInit();
 
-    //Set vertices of triangles
+    //Set vertices of triangles (We just render two triangles)
     GLfloat vertices[] =
     {
         -1.0f,  1.0f, 0.0f,
@@ -27,14 +27,14 @@ void MyGlWindow::initializeGL()
     glGenBuffers(1, &vertexBufferId);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
 
-    //Copy vertices to GPU
+    //Copy defined vertices to GPU
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    //Set attributes on data.
+    //Set attributes on data. In this case we require a single attribute: vertex location.
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
-    //Indices
+    //Setup vertex ids
     GLushort indices[] = {0, 1, 2, 3, 4, 2};
 
     GLuint indexBufferId;
@@ -51,15 +51,12 @@ void MyGlWindow::initializeGL()
 
     if(!fs::exists(vertex_shader_file) || !fs::exists(fragment_shader_file))
     {
-        std::cerr << "Shaders directory couldn't be found. Expected files: "
-                  << vertex_shader_file.string() << " and "
-                  << fragment_shader_file.string() <<
-                    "Exiting." << std::endl;
-        exit(1);
+        std::cerr << "Shaders couldn't be found. Please make sure that you run the executable in the directory opengl-101/build" << std::endl;
+        exit(EXIT_FAILURE);
     }
-
-    ShaderInstaller installer;
-    GLuint program = installer.installShaders(vertex_shader_file, fragment_shader_file);
+	
+	//Compile and install the shaders
+    GLuint program = installShaders(vertex_shader_file.string(), fragment_shader_file.string());
 
     glUseProgram(program);
 }

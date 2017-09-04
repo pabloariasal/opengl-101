@@ -1,8 +1,5 @@
-#include <iostream>
-
 #include <QApplication>
-
-#include "MyGlWindow.h"
+#include "my_gl_window.h"
 
 int main(int argc, char** argv)
 {
