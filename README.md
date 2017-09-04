@@ -1,11 +1,10 @@
 # opengl-101
 
 Basic OpenGl project. Contains the minimal necessary code to render two red triangles on the window.
-
-![program output](screenshot.png?raw=true)
-
 Can serve as baseline project for OpenGl learnes willing to test and play around.
 Uses OpenGL 4 and Qt5. 
+
+![program output](screenshot.png?raw=true)
 
 # Dependencies
 
@@ -25,10 +24,10 @@ cmake ..
 make
 ```
 
-#Usage 
+# Usage 
 
 Just run the executable:
 
 `./opengl-101`
 
-The executable will run the software and render two triangles on the screen.
+A window will open and two red triangles will be rendered.
