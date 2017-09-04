@@ -28,6 +28,9 @@ make
 
 Just run the executable:
 
-`./opengl-101`
+```
+cd build
+./opengl-101
+```
 
 A window will open and two red triangles will be rendered.
